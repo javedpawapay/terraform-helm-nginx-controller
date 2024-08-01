@@ -40,6 +40,11 @@ resource "helm_release" "application" {
     type  = "string"
     value = "${var.controller_request_memory}Mi"
   }
+  set {
+    name  = "controller.config.allow-snippet-annotations"
+    type  = "string"
+    value = "true"
+  }
 
   dynamic "set" {
     for_each = local.controller_service_nodePorts
